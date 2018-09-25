@@ -85,14 +85,14 @@ console.log("Test");
 //}
 //have an event attached to a DOM, and inside that function, access the game object
 
-class Tomagotchi {
+class Tamagotchi {
 	constructor(hunger, sleepiness, boredom, age, name, gender, birthday) {
-		this.name = name;
-		this.sleepiness = 0;
-		this.boredom = 0;
-		this.age = 0;
-		this.gender = genderRandom();
-		this.birthday = //take something from start button, setTime/setDate
+		this.name = name,
+		this.sleepiness = 0,
+		this.boredom = 0,
+		this.age = 0,
+		this.gender = this.genderRandom(),
+		this.birthday = ""//take something from start button, setTime/setDate
 	}
 	stuffHappens() {
 		this.hunger += this.hunger;
@@ -101,56 +101,70 @@ class Tomagotchi {
 		this.age += this.age;
 
 	}
-	isDead(hunger, sleepiness, boredom, age) {
-		if (this.hunger < 10 || this.sleepiness < 10 || ) {
+	isDead() {
+		if (this.hunger < 10 || this.sleepiness < 10 || this.boredom <10 || this.age < 10) {
 			console.log("Tamagotchi died");
 			//Figure out what to do here based on console log
 		} 
 		return false;
+	}	
 	genderRandom() {
 		const genderCheck = ["male", "female"];
-		let pickedGender = "";
-		pickedGender = genderCheck[Math.floor(Math.random())]
+		let pickedGender = Math.floor(Math.random()*genderCheck.length);
 	}
-	};
-const game = { 
-	const generateTamagotchi() {
-		const tamaName;//input;
-		const gender = ;
-		const tamagotchi = new Tamagotchi(tamaName, this.hunger, this.sleepiness, this.boredom, )
-	}
-//this.tamagotchi = this.generateTamagotchi();
-
-//printStates(hunger, boredom, sleepiness, age)
-////tamagotchigameloop() 
-//ageTamagotchi()
-//playWithTamagotchi()
-//exerciseWithTamagotchi()
-//lightsOut();
-//feedSnack();
-//feedMeal();
-
-
-
-
-	
-
-
-
-const intervalController = () => {
-
-	// let interval = setInterval(tamagotchiPointIncrease(),10 * 60 * 1000);  
-	const 
-	let interval = setInterval(() => {
-		// code in ere will repeat
-		// increase age
-		nameOfTama.stuffHappens()
-	}, 1000);  
-
 };
 
 
 
+
+const game = () => { 
+	const generateTamagotchi = () => {
+	const tamaName = "";
+	const gender = "";
+	const tamagotchi = new Tamagotchi(tamaName, hunger, sleepiness, boredom);
+	return tamagotchi;  
+
+	}
+	const printStates = (hunger, boredom, sleepiness, age) => {
+
+
+	}
+	const tamagotchigameloop = () => {
+
+	}
+	const ageTamagotchi = (interval) => {
+	let interval = intervalController();
+	}
+	const playWithTamagotchi = () => {
+
+	}
+	const exerciseWithTamagotchi = () => {
+
+	}
+	const lightsOut = () => {
+
+	}
+	const feedSnack = () => {
+
+	}
+	const feedMeal = () => {
+
+	}
+	const intervalController = () => {
+
+		// let interval = setInterval(tamagotchiPointIncrease(),10 * 60 * 1000);  
+		let count = 0;
+		let interval = setInterval(() => {
+			for (let i = 0; i < 60000; i++) {
+				count++;
+			}
+			tamaName.stuffHappens()
+		}, 1000);  
+
+	}
+
+
+};
 
 	//Things that happen constantly, hunger, sleepiness, boredom, age. 
 	//}
@@ -205,7 +219,7 @@ const intervalController = () => {
 
 
 
-};
+
 /********************************LISTENERS*********************************/
 
 
