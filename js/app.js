@@ -143,10 +143,10 @@ const game = {
 	},
 	feedSnack() {
 
-	}
+	},
 	feedMeal() {
 
-	}
+	},
 	intervalController(){
 
 	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
@@ -157,7 +157,7 @@ const game = {
 			
 		}, 1000);  
 		// return count;
-	}
+	},
 
 
 };
@@ -209,6 +209,8 @@ const game = {
 
 
 /********************************LISTENERS*********************************/
+//listen for game start
+//listen for name entry
 
 
 

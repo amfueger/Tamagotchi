@@ -1,3 +1,20 @@
 h1 {
-	color: pink;
+	color: GhostWhite;
+	text-align: center;
+	font-family: 'Permanent Marker', cursive;
+	font-weight: 100px;
+	font-size: 60px;
+}
+
+.oval {
+  width: 600px;
+  height: 700px;
+  background-clip: content-box;
+  background-image: url('img/tamagotchibackground.jpg');
+  border-radius: 50%;
+  border: 2px solid pink;
+}
+
+p {
+	font-family: 'Press Start 2P', cursive;
 }
