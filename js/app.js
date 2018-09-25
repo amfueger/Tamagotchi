@@ -117,63 +117,51 @@ class Tamagotchi {
 
 
 
-const game = () => { 
-	const generateTamagotchi = () => {
-	const tamaName = "";
-	const gender = "";
-	const tamagotchi = new Tamagotchi(tamaName, hunger, sleepiness, boredom);
-	return tamagotchi;  
+const game = { 
+	generateTamagotchi() {
+		const tamaName = "";
+		const gender = "";
+		const tamagotchi = new Tamagotchi(tamaName, hunger, sleepiness, boredom);
+		return tamagotchi;  
+
+	},
+	printStates() {
+
+
+	},
+	tamagotchigameloop() {
+
+	},
+	playWithTamagotchi() {
+
+	},
+	exerciseWithTamagotchi() {
+
+	},
+	lightsOut() {
+
+	},
+	feedSnack() {
 
 	}
-	const printStates = (hunger, boredom, sleepiness, age) => {
-
-
-	}
-	const tamagotchigameloop = () => {
+	feedMeal() {
 
 	}
-	const ageTamagotchi = (interval) => {
-	let interval = intervalController();
-	}
-	const playWithTamagotchi = () => {
+	intervalController(){
 
-	}
-	const exerciseWithTamagotchi = () => {
-
-	}
-	const lightsOut = () => {
-
-	}
-	const feedSnack = () => {
-
-	}
-	const feedMeal = () => {
-
-	}
-	const intervalController = () => {
-
-		// let interval = setInterval(tamagotchiPointIncrease(),10 * 60 * 1000);  
+	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
 		let count = 0;
 		let interval = setInterval(() => {
-			for (let i = 0; i < 60000; i++) {
-				count++;
-			}
-			tamaName.stuffHappens()
-		}, 1000);  
 
+				tamaName.stuffHappens()
+			
+		}, 1000);  
+		// return count;
 	}
 
 
 };
 
-	//Things that happen constantly, hunger, sleepiness, boredom, age. 
-	//}
-//}
-//call all functions from within here!
-//tamagotchigameloop() {
-
-
-//}; 
 
 //set one interval, and have that function call the time, consider it an update function, however many frames per second, one instance of a set interval. 
 
