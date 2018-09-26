@@ -123,12 +123,28 @@ const game = {
 	tamagotchi: null,
 	//Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
 	generateTamagotchi() {
-
 		// get name
 
 		let birthday = "today" // come back later and use timestamp
 
 		this.tamagotchi = new Tamagotchi();
+
+		let $welcomeText = $('#welcome');
+	
+		$welcomeText.show();
+		// $welcomeText.velocity('transition.FadeIn', 200);
+		
+		// console.log($('.getName'));
+		// $('.getName').hide()
+		$('#thing-to-hide').hide();
+		// $('#name-prompt').hide();
+		// $('#name-input').hide();
+		// $('#doneButton').hide();
+		
+		setTimeout(() => {
+			$('.gameButtons').show();
+			$welcomeText.remove();//.velocity('transition.FadeOut', 200);
+		}, 1000)
 	
 
 	},
@@ -153,14 +169,14 @@ const game = {
 		console.log("test printStats");
 		$('.gameText').text("" + this.tamagotchi.hunger)
 	},
-	tamagotchigame() {
-		//set starting image
-		//A tamagotchi is born!!
-		this.generateTamagotchi();
-		//start interval
-		this.intervalController();
+	// tamagotchigame() {
+	// 	//set starting image
+	// 	//A tamagotchi is born!!
+	// 	this.generateTamagotchi();
+	// 	//start interval
+	// 	this.intervalController();
 
-	},
+	// },
 	playWithTamagotchi(boredom) {
 		this.tamagotchi.boredom -= this.tamagotchi.boredom;
 	},
@@ -177,7 +193,7 @@ const game = {
 	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
 		let count = 0;
 		let interval = setInterval(() => {
-			console.log("timer running, count = " count)	
+			console.log("timer running, count = " + count);	
 			this.tamaName.stuffHappens()
 			count++
 		}, 1000);  
@@ -185,15 +201,12 @@ const game = {
 	},
 	
 	start() {
-		$('#gameText').show($('#hungry')).show($('#boredy').show($('#sleepy');
-		$('#gameText').show($('.getName'));
-	
-
-		let $gameText = $('.gameText');	
-		$gameText.hide($('#start', ));
-	
-		let $welcomeText = $gameText.prepend($('<p>Welcome to Tamagotchi! </p>'));
-		$welcomeText.velocity('transition.FadeIn', 200);
+		//show the game buttons and the form for receiving name
+		// let $gameText = $('#gameText');	
+		$('.getName').show();
+		//hide the start button
+		$('#start').hide();
+		
 
 		// this.generateTamagotchi();
 		// this.name();
@@ -208,8 +221,9 @@ const game = {
 
 /********************************LISTENERS*********************************/
 // hidden buttons at page load
-$('#gameText').hide($('#hungry')).hide($('#boredy').hide($('#sleepy');
-$('gameText').hide($('.getName'));
+$('.gameButtons').hide();
+$('.getName').hide();
+$('#welcome').hide();
 
 
 
@@ -221,6 +235,7 @@ $('#hungry').on('click', game.playWithTamagotchi);
 $('#play').on('click', game.feedMeal);
 
 // 3. add a listener for the done button
+$('#doneButton').on('click', game.generateTamagotchi);
 
 // 4. test the listener for the done button
 

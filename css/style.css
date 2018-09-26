@@ -15,11 +15,13 @@ h1 {
   border: 2px solid pink;
 }
 
-.text {
+p {
 	font-family: 'Press Start 2P', cursive;
+	font-size: 10px;
 }
 
 #hungry, #boredy, #sleepy {
 	border-radius: 50%
-	font-size: 2px;
+	font-size: 1px;
+	font-family: 'Press Start 2P', cursive;
 }

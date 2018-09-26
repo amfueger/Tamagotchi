@@ -14,16 +14,20 @@
 		
 		<div class="display"><img class="displayimage" src="css/img/Ready.gif" ></div>
 		
-		<div class="text"><p>Welcome to Tamagotchi!</p></div>
+		<div id="welcome"><p>Welcome to Tamagotchi!</p></div>
 
-		<div class="gameText">
+		<div id="gameText">
 			<button id="start">Start</button>
-			<button id="hungry">Food</button>
-			<button id="sleepy">Sleep</button>
-			<button id="boredy">Play</button>
-			<p class="getName">Please type your name</p>
-			<form class="getName"></form>
-			<button class="getName">Done</button>
+			<button class="gameButtons" id="hungry">Food</button>
+			<button class="gameButtons" id="sleepy">Sleep</button>
+			<button class="gameButtons" id="boredy">Play</button>
+
+			<div id="thing-to-hide">
+				<p class="getName" id="name-prompt">Please type your name</p>	
+				<input class="getName" type="text" name="name" id="name-input" />
+				<button class="getName" id="doneButton">Done</button>
+			</div>
+
 		</div>
 	</div>
 
