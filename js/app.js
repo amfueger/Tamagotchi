@@ -86,8 +86,8 @@ console.log("Test");
 //have an event attached to a DOM, and inside that function, access the game object
 
 class Tamagotchi {
-	constructor(hunger, sleepiness, boredom, age, name, gender, birthday) {
-		this.name = "",
+	constructor(name, birthday) {
+		this.name = name,
 		this.hunger = 0,
 		this.sleepiness = 0,
 		this.boredom = 0,
@@ -120,22 +120,35 @@ class Tamagotchi {
 
 
 const game = { 
-	tamagotchi:null;
+	tamagotchi: null,
 	//Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
 	generateTamagotchi() {
+
+		// get name
+
+		let birthday = "today" // come back later and use timestamp
+
 		this.tamagotchi = new Tamagotchi();
 	
 
 	},
-	name(name) {
-		let $name = $('.gameText').append($('<form/>')
-		$('.gameText').append($name)
 
-		 + $('<br/>') + $('<p>Type name</p>')
-		) //solicit name
-	
-		this.tamagotchi.name = $name;
-	}
+	getName(name) {
+
+		// 5. get name from form
+
+		// 6. (AFTER MVP -- get timestamp)
+
+		// 7. create tamagotchi here (until mvp, hard code birthday)
+
+		// 8. put tamagotchi you created in this.tomagotchi
+
+		// .hide form again()
+
+		// 9. start timer
+		this.startTimer();
+
+	},
 	printStats(hunger, sleepiness, boredom, age) {
 		console.log("test printStats");
 		$('.gameText').text("" + this.tamagotchi.hunger)
@@ -152,7 +165,7 @@ const game = {
 		this.tamagotchi.boredom -= this.tamagotchi.boredom;
 	},
 	lightsOff(sleepiness) {
-		let $sleepiness = $('.sleep')
+		// let $sleepiness = $('.sleep')
 		this.tamagotchi.sleepiness = this.tamagotchi.sleepiness - 2;
 
 			//link the sleepy time to a delayed animation
@@ -160,29 +173,35 @@ const game = {
 	feedMeal(hunger) {
 		this.tamagotchi.hunger = this.tamagotchi.hunger - 2;
 	},
-	intervalController(){
+	startTimer(){
 	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
 		let count = 0;
 		let interval = setInterval(() => {
-
-				this.tamaName.stuffHappens()
-			
+			console.log("timer running, count = " count)	
+			this.tamaName.stuffHappens()
+			count++
 		}, 1000);  
 		// return count;
 	},
 	
 	start() {
+
+		// 0. hard-code form into html first
+
+		// 2. -- this is what happens when user clicks start 
+		// make form appear (use .show()) 
+
 		let $gameText = $('.gameText');	
-		$gameText.remove($('<button/>'));
-		$gameText.append($('<button id="hungry">Feed Me</button>'));
-		$gameText.append($('<button id="play"> Play</button>'));
-		$gameText.append($('<button id="sleep"> Sleep </button>'));
+		// $gameText.remove($('<button/>'));
+		// $gameText.append($('<button id="hungry">Feed Me</button>'));
+		// $gameText.append($('<button id="play"> Play</button>'));
+		// $gameText.append($('<button id="sleep"> Sleep </button>'));
 		let $welcomeText = $gameText.prepend($('<p>Welcome to Tamagotchi! </p>'));
 		$welcomeText.velocity('transition.FadeIn', 200);
 
-		this.generateTamagotchi();
-		this.name();
-		this.printStats()
+		// this.generateTamagotchi();
+		// this.name();
+		// this.printStats();
 	}
 
 
@@ -194,17 +213,22 @@ const game = {
 /********************************LISTENERS*********************************/
 //listen for game start
 
+$('#gameText').on('click', game.start);
+$('#sleep').on('click', game.lightsOff);
+$('#hungry').on('click', game.playWithTamagotchi);
+$('#play').on('click', game.feedMeal);
 
-$('.gameText').on('click', game.start);
-$('.sleep').on('click', game.lightsOff);
-$('.hungry').on('click', game.playWithTamagotchi);
-$('.play').on('click', game.feedMeal);
+// 3. add a listener for the done button
+
+// 4. test the listener for the done button
+
+// 5. make done button call getName -- see 5 above
+
 
 //listen for name entry
 
 
-
-
+// 1. hide the form for name entry using jquery .hide()
 
 
 /********************************QUESTIONS/NOTES*********************************/
