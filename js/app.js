@@ -94,7 +94,14 @@ class Tamagotchi {
             this.age = 0,
             this.gender = this.genderRandom(),
             this.birthday = "" //take something from start button, setTime/setDate
-            this.lifecycle = 
+            this.lifecycle = if(this.age > 3 && this.age <= 6) {
+            	igglytoJiggly()
+            } else if (this.age > 6 && this.age <= 10) {
+            	jigglytoWiggly()
+            } else {
+            	igglyBuff()
+
+            }
     }
     stuffHappens() {
         this.hunger += this.hunger;
@@ -115,9 +122,12 @@ class Tamagotchi {
         let pickedGender = Math.floor(Math.random() * genderCheck.length);
     }
     igglyToJiggly() {
+    $('.displayImage').attr('src', "css/img/Igglybuff.piskel";
+    }
+    jigglytoWiggly() {
 
     }
-    JigglytoWiggly() {
+    igglyBuff() {
 
     }
 };
@@ -157,7 +167,7 @@ const game = {
 
         // 9. start timer
         this.startTimer();
-        if(this.startcount)
+      
 
     },
     printStats: function(hunger, sleepiness, boredom, age) {
