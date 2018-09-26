@@ -79,139 +79,121 @@ console.log("Test");
 // 		this.
 // 	}
 // 	//hunger, 0, sleepiness, 0, boredom, 0, age, 0, name = this.name;
-	
+
 
 
 //}
 //have an event attached to a DOM, and inside that function, access the game object
 
 class Tamagotchi {
-	constructor(name, birthday) {
-		this.name = name,
-		this.hunger = 0,
-		this.sleepiness = 0,
-		this.boredom = 0,
-		this.age = 0,
-		this.gender = this.genderRandom(),
-		this.birthday = ""//take something from start button, setTime/setDate
-	}
-	stuffHappens() {
-		this.hunger += this.hunger;
-		this.sleepiness += this.sleepiness;
-		this.boredom += this.boredom;
-		this.age += this.age;
+    constructor(name, birthday) {
+        this.name = name,
+            this.hunger = 0,
+            this.sleepiness = 0,
+            this.boredom = 0,
+            this.age = 0,
+            this.gender = this.genderRandom(),
+            this.birthday = "" //take something from start button, setTime/setDate
+            this.lifecycle = 
+    }
+    stuffHappens() {
+        this.hunger += this.hunger;
+        this.sleepiness += this.sleepiness;
+        this.boredom += this.boredom;
+        this.age += this.age;
 
-	}
-	isDead() {
-		if (this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.age > 10) {
-			console.log("Tamagotchi died");
-			//Figure out what to do here based on console log
-		} 
-		return false;
-	}	
-	genderRandom() {
-		const genderCheck = ["male", "female"];
-		let pickedGender = Math.floor(Math.random()*genderCheck.length);
-	}
-	
+    }
+    isDead() {
+        if (this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.age > 10) {
+            console.log("Tamagotchi died");
+            //Figure out what to do here based on console log
+        }
+        return false;
+    }
+    genderRandom() {
+        const genderCheck = ["male", "female"];
+        let pickedGender = Math.floor(Math.random() * genderCheck.length);
+    }
+    igglyToJiggly() {
+
+    }
+    JigglytoWiggly() {
+
+    }
 };
 
 
 
 
-const game = { 
-	tamagotchi: null,
-	//Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
-	generateTamagotchi() {
-		// get name
+const game = {
+    tamagotchi: null,
+    //Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
+    generateTamagotchi(name, birthday, count) {
+  		// Get name from input
+        const $nameInput = $('#name-input');
 
-		let birthday = "today" // come back later and use timestamp
 
-		this.tamagotchi = new Tamagotchi();
+        // 6. (AFTER MVP -- get timestamp)
+        const dt = new Date();
+        const birthday = dt.toUTCString();
+       	
 
-		let $welcomeText = $('#welcome');
-	
-		$welcomeText.show();
-		// $welcomeText.velocity('transition.FadeIn', 200);
-		
-		// console.log($('.getName'));
-		// $('.getName').hide()
-		$('#thing-to-hide').hide();
-		// $('#name-prompt').hide();
-		// $('#name-input').hide();
-		// $('#doneButton').hide();
-		
-		setTimeout(() => {
-			$('.gameButtons').show();
-			$welcomeText.remove();//.velocity('transition.FadeOut', 200);
-		}, 1000)
-	
-
-	},
-
-	getName(name) {
-
-		// 5. get name from form
-
-		// 6. (AFTER MVP -- get timestamp)
-
-		// 7. create tamagotchi here (until mvp, hard code birthday)
-
+        // 7. create tamagotchi here (until mvp, hard code birthday)
 		// 8. put tamagotchi you created in this.tomagotchi
+        this.tamagotchi = new Tamagotchi($nameInput, birthday);
+        const $welcomeText = $('#welcome');
 
-		// .hide form again()
+        $welcomeText.show().velocity('transition.FadeIn', 200);
 
-		// 9. start timer
-		this.startTimer();
+        
+        $('#getName').hide();
+   		// .hide form again()
 
-	},
-	printStats(hunger, sleepiness, boredom, age) {
-		console.log("test printStats");
-		$('.gameText').text("" + this.tamagotchi.hunger)
-	},
-	// tamagotchigame() {
-	// 	//set starting image
-	// 	//A tamagotchi is born!!
-	// 	this.generateTamagotchi();
-	// 	//start interval
-	// 	this.intervalController();
+        setTimeout(() => {
+            $('.gameButtons').show();
+            $welcomeText.remove().velocity('transition.FadeOut', 200);
+        }, 1000)
+        
 
-	// },
-	playWithTamagotchi(boredom) {
-		this.tamagotchi.boredom -= this.tamagotchi.boredom;
-	},
-	lightsOff(sleepiness) {
-		// let $sleepiness = $('.sleep')
-		this.tamagotchi.sleepiness = this.tamagotchi.sleepiness - 2;
+        // 9. start timer
+        this.startTimer();
+        if(this.startcount)
 
-			//link the sleepy time to a delayed animation
-	},
-	feedMeal(hunger) {
-		this.tamagotchi.hunger = this.tamagotchi.hunger - 2;
-	},
-	startTimer(){
-	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
-		let count = 0;
-		let interval = setInterval(() => {
-			console.log("timer running, count = " + count);	
-			this.tamaName.stuffHappens()
-			count++
-		}, 1000);  
-		// return count;
-	},
-	
-	start() {
-		//show the game buttons and the form for receiving name
-		// let $gameText = $('#gameText');	
-		$('.getName').show();
-		//hide the start button
-		$('#start').hide();
-		
+    },
+    printStats: function(hunger, sleepiness, boredom, age) {
+        console.log("test printStats");
+        $('.gameText').text("" + this.tamagotchi.hunger)
+    },
+  
+    playWithTamagotchi(boredom) {
+        this.tamagotchi.boredom -= this.tamagotchi.boredom;
+    },
+    lightsOff(sleepiness) {
+        // let $sleepiness = $('.sleep')
+        this.tamagotchi.sleepiness = this.tamagotchi.sleepiness - 2;
 
-		// this.generateTamagotchi();
-		// this.name();
-		// this.printStats();
-	}
+        //link the sleepy time to a delayed animation
+    },
+    feedMeal(hunger) {
+        this.tamagotchi.hunger = this.tamagotchi.hunger - 2;
+    },
+    startTimer(count) {
+        //concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
+        let count = 0;
+        let interval = setInterval(function() {
+            console.log("timer running, count = " + count);
+            this.tamaName.stuffHappens();
+            count++;
+        }, 1000);
+        
+    },
+
+    start() {
+        //show input
+        $('.getName').show();
+        //hide the start button
+        $('#start').hide();
+    }
 
 
 };
@@ -230,12 +212,22 @@ $('#welcome').hide();
 //listen for game start
 
 $('#gameText').on('click', game.start);
-$('#sleep').on('click', game.lightsOff);
-$('#hungry').on('click', game.playWithTamagotchi);
-$('#play').on('click', game.feedMeal);
+
+$('#sleep').on('click', () => {
+	game.lightsOff();
+});
+$('#hungry').on('click', () => {
+	game.playWithTamagotchi();
+});
+
+$('#play').on('click', () => {
+	game.feedMeal();
+});
 
 // 3. add a listener for the done button
-$('#doneButton').on('click', game.generateTamagotchi);
+$('#doneButton').on('click', () => {
+	game.generateTamagotchi();
+});
 
 // 4. test the listener for the done button
 
@@ -256,5 +248,3 @@ $('#doneButton').on('click', game.generateTamagotchi);
 
 //CALL THE GAME
 //on.click start button
-
-

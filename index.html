@@ -4,13 +4,16 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"></link>
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/2.0.5/velocity.min.js"></script>
 </head>
 <body>
 
 	<div class="oval">
 		<h1>Tamagotchi</h1>
+		<h2>Pokemon edition!</h2>
 		
 		<div class="display"><img class="displayimage" src="css/img/Ready.gif" ></div>
 		
@@ -22,9 +25,8 @@
 			<button class="gameButtons" id="sleepy">Sleep</button>
 			<button class="gameButtons" id="boredy">Play</button>
 
-			<div id="thing-to-hide">
-				<p class="getName" id="name-prompt">Please type your name</p>	
-				<input class="getName" type="text" name="name" id="name-input" />
+			<div id="getName">
+				<p id="name-prompt">Please type your name</p><input type="text" name="name" id="name-input" />
 				<button class="getName" id="doneButton">Done</button>
 			</div>
 

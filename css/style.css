@@ -5,14 +5,20 @@ h1 {
 	font-weight: 100px;
 	font-size: 60px;
 }
-
+h2 {
+	font-family: 'Chicle', cursive;
+	color: MediumVioletRed;
+	text-align: center;
+	font-size: 40px;
+	font-weight: 10;
+}
 .oval {
-  width: 600px;
-  height: 700px;
-  background-clip: content-box;
-  background-image: url('img/tamagotchibackground.jpg');
-  border-radius: 50%;
-  border: 2px solid pink;
+	width: 600px;
+	height: 700px;
+	background-clip: content-box;
+	background-image: url('img/tamagotchibackground.jpg');
+	border-radius: 50%;
+	border: 2px solid pink;
 }
 
 p {
