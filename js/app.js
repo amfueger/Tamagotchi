@@ -49,7 +49,7 @@ console.log("Test");
 /********************************* USER STORIES ***************************
 
 1. User clicks start game button
-	a. Tamgagotchi is generated with properties of hunger, sleepiness, boredom, age, name, gender, birthday. His birthday is logged. Stats are printed. Tamagotchi is a baby. 
+	a. Tamgagotchi is generated with properties of hunger, sleepiness, boredom, age, name, gender, birthday. His birthday is logged. Stats are printed. 
 	b. 
 
 
@@ -87,7 +87,7 @@ console.log("Test");
 
 class Tamagotchi {
 	constructor(hunger, sleepiness, boredom, age, name, gender, birthday) {
-		this.name = name,
+		this.name = "",
 		this.hunger = 0,
 		this.sleepiness = 0,
 		this.boredom = 0,
@@ -103,7 +103,7 @@ class Tamagotchi {
 
 	}
 	isDead() {
-		if (this.hunger < 10 || this.sleepiness < 10 || this.boredom <10 || this.age < 10) {
+		if (this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.age > 10) {
 			console.log("Tamagotchi died");
 			//Figure out what to do here based on console log
 		} 
@@ -113,120 +113,96 @@ class Tamagotchi {
 		const genderCheck = ["male", "female"];
 		let pickedGender = Math.floor(Math.random()*genderCheck.length);
 	}
+	
 };
 
 
 
 
 const game = { 
+	tamagotchi:null;
+	//Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
 	generateTamagotchi() {
-		const tamaName = "";
-		const gender = "";
-		const tamagotchi = new Tamagotchi(tamaName, hunger, sleepiness, boredom);
-		return tamagotchi;  
+		this.tamagotchi = new Tamagotchi();
+	
 
 	},
+	name(name) {
+		let $name = $('.gameText').append($('<form/>')
+		$('.gameText').append($name)
+
+		 + $('<br/>') + $('<p>Type name</p>')
+		) //solicit name
+	
+		this.tamagotchi.name = $name;
+	}
 	printStats(hunger, sleepiness, boredom, age) {
 		console.log("test printStats");
+		$('.gameText').text("" + this.tamagotchi.hunger)
 	},
-	tamagotchigameloop() {
+	tamagotchigame() {
 		//set starting image
 		//A tamagotchi is born!!
-		generateTamagotchi();
+		this.generateTamagotchi();
+		//start interval
+		this.intervalController();
 
 	},
 	playWithTamagotchi(boredom) {
-		return tamagotchi.boredom = --tamagotchi.boredom;
-	},
-	exerciseWithTamagotchi(boredom) {
-		return tamagotchi.boredom = --tamagotchi.boredom
-		;
+		this.tamagotchi.boredom -= this.tamagotchi.boredom;
 	},
 	lightsOff(sleepiness) {
-		let lights = true;
-		if(lights == true) {
-			tamagotchi.sleepiness = tamagotchi.sleepiness - 2;
-			return tamagotchi.sleepiness;
-		} 
-	},
-	
-	feedSnack(hunger) {
-		//reduce tamagotchi.hunger 
-		return tamagotchi.hunger = --tamagotchi.hunger;
+		let $sleepiness = $('.sleep')
+		this.tamagotchi.sleepiness = this.tamagotchi.sleepiness - 2;
 
+			//link the sleepy time to a delayed animation
 	},
 	feedMeal(hunger) {
-		return tamagotchi.hunger = tamagotchi.hunger -2;
+		this.tamagotchi.hunger = this.tamagotchi.hunger - 2;
 	},
 	intervalController(){
 	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
 		let count = 0;
 		let interval = setInterval(() => {
 
-				tamaName.stuffHappens()
+				this.tamaName.stuffHappens()
 			
 		}, 1000);  
 		// return count;
 	},
+	
+	start() {
+		let $gameText = $('.gameText');	
+		$gameText.remove($('<button/>'));
+		$gameText.append($('<button id="hungry">Feed Me</button>'));
+		$gameText.append($('<button id="play"> Play</button>'));
+		$gameText.append($('<button id="sleep"> Sleep </button>'));
+		let $welcomeText = $gameText.prepend($('<p>Welcome to Tamagotchi! </p>'));
+		$welcomeText.velocity('transition.FadeIn', 200);
+
+		this.generateTamagotchi();
+		this.name();
+		this.printStats()
+	}
 
 
 };
-
-
-//set one interval, and have that function call the time, consider it an update function, however many frames per second, one instance of a set interval. 
-
-// in interval
-	// hunger up
-	// age up
-	// sleepiness up
-	// 
-
-
-//Click the button, global register i++ to the variables. When it reaches the interval, it looks for buttons clicked and then does the actions. IT would be a delay ti put it in the loop but there'd be enough updates per milisecond. 
-
-//interactions with on.('click' ())
-//1. Feed
-//2. Lights (off)
-//3. Play with Tamagotchi
-	//a. Exercise reduce points by 2? Or random int
-	//b. Play with toys reduce points by 1? Or random int
-//Feed button, click it, feed button clicked, reduces its hunger by Int.  
-
-
-//When it's queried everything gets reset to false. Set all of them to false. Only set to true if you click the appropriate button
-//4. Wake up if feed click, else if play, else if exercise, else if lights on, else {continue state}
-//5. lightsOn();
-
-//Other interactions:
-
-//Rename tamagotchi, button click, outside gameplay
-
-//FUNCTIONS:
-
-//generateTamogatchi() { 
-	//const tamagotchi = new Tamagotchi(const name = on.click prompt?)
-	//
-
-//return tamagotchi;
-//}
-//playWithTamagotchi(tamogatchi); Target is tamogatchi...
-//
-
-
-// is dead will tell me if the tama has died yet, call and check every second. 
 
 
 
 
 /********************************LISTENERS*********************************/
 //listen for game start
-const $start = () => {
-$('.gameText').on('click', $start())
-game()
-$('.gameText').remove($('<button/>'));
 
+
+$('.gameText').on('click', game.start);
+$('.sleep').on('click', game.lightsOff);
+$('.hungry').on('click', game.playWithTamagotchi);
+$('.play').on('click', game.feedMeal);
 
 //listen for name entry
+
+
 
 
 
