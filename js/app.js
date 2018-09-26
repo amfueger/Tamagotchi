@@ -88,6 +88,7 @@ console.log("Test");
 class Tamagotchi {
 	constructor(hunger, sleepiness, boredom, age, name, gender, birthday) {
 		this.name = name,
+		this.hunger = 0,
 		this.sleepiness = 0,
 		this.boredom = 0,
 		this.age = 0,
@@ -125,30 +126,39 @@ const game = {
 		return tamagotchi;  
 
 	},
-	printStates() {
-
-
+	printStats(hunger, sleepiness, boredom, age) {
+		console.log("test printStats");
 	},
 	tamagotchigameloop() {
+		//set starting image
+		//A tamagotchi is born!!
+		generateTamagotchi();
 
 	},
-	playWithTamagotchi() {
+	playWithTamagotchi(boredom) {
+		return tamagotchi.boredom = --tamagotchi.boredom;
+	},
+	exerciseWithTamagotchi(boredom) {
+		return tamagotchi.boredom = --tamagotchi.boredom
+		;
+	},
+	lightsOff(sleepiness) {
+		let lights = true;
+		if(lights == true) {
+			tamagotchi.sleepiness = tamagotchi.sleepiness - 2;
+			return tamagotchi.sleepiness;
+		} 
+	},
+	
+	feedSnack(hunger) {
+		//reduce tamagotchi.hunger 
+		return tamagotchi.hunger = --tamagotchi.hunger;
 
 	},
-	exerciseWithTamagotchi() {
-
-	},
-	lightsOut() {
-
-	},
-	feedSnack() {
-
-	},
-	feedMeal() {
-
+	feedMeal(hunger) {
+		return tamagotchi.hunger = tamagotchi.hunger -2;
 	},
 	intervalController(){
-
 	//concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
 		let count = 0;
 		let interval = setInterval(() => {
@@ -210,6 +220,12 @@ const game = {
 
 /********************************LISTENERS*********************************/
 //listen for game start
+const $start = () => {
+$('.gameText').on('click', $start())
+game()
+$('.gameText').remove($('<button/>'));
+
+
 //listen for name entry
 
 
