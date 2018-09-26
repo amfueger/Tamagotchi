@@ -185,9 +185,9 @@ const game = {
 	},
 	
 	start() {
-
-		// 2. -- this is what happens when user clicks start 
-		// make form appear (use .show()) 
+		$('#gameText').show($('#hungry')).show($('#boredy').show($('#sleepy');
+		$('#gameText').show($('.getName'));
+	
 
 		let $gameText = $('.gameText');	
 		$gameText.hide($('#start', ));
@@ -209,6 +209,7 @@ const game = {
 /********************************LISTENERS*********************************/
 // hidden buttons at page load
 $('#gameText').hide($('#hungry')).hide($('#boredy').hide($('#sleepy');
+$('gameText').hide($('.getName'));
 
 
 
@@ -227,9 +228,6 @@ $('#play').on('click', game.feedMeal);
 
 
 //listen for name entry
-
-
-// 1. hide the form for name entry using jquery .hide()
 
 
 /********************************QUESTIONS/NOTES*********************************/
