@@ -186,16 +186,12 @@ const game = {
 	
 	start() {
 
-		// 0. hard-code form into html first
-
 		// 2. -- this is what happens when user clicks start 
 		// make form appear (use .show()) 
 
 		let $gameText = $('.gameText');	
-		// $gameText.remove($('<button/>'));
-		// $gameText.append($('<button id="hungry">Feed Me</button>'));
-		// $gameText.append($('<button id="play"> Play</button>'));
-		// $gameText.append($('<button id="sleep"> Sleep </button>'));
+		$gameText.hide($('#start', ));
+	
 		let $welcomeText = $gameText.prepend($('<p>Welcome to Tamagotchi! </p>'));
 		$welcomeText.velocity('transition.FadeIn', 200);
 
@@ -211,6 +207,11 @@ const game = {
 
 
 /********************************LISTENERS*********************************/
+// hidden buttons at page load
+$('#gameText').hide($('#hungry')).hide($('#boredy').hide($('#sleepy');
+
+
+
 //listen for game start
 
 $('#gameText').on('click', game.start);

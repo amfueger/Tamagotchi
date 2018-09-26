@@ -19,7 +19,7 @@ h1 {
 	font-family: 'Press Start 2P', cursive;
 }
 
-button, .hungry, .play, .sleep {
+#hungry, #boredy, #sleepy {
 	border-radius: 50%
 	font-size: 2px;
 }
