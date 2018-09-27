@@ -157,7 +157,8 @@ const game = {
 
     generateTamagotchi(name, birthday, count) {
 
-        const $nameInput = $('#name-input').val()[0];
+        const $nameInput = $('#name-input').val();
+        console.log($nameInput);
         this.tamagotchi = new Tamagotchi($nameInput);
         console.log(game.tamagotchi.hunger + "checking hunger after making tamagotchi");
  		//let hunger = game.tamagotchi.hunger;
@@ -189,6 +190,7 @@ const game = {
 
     playWithTamagotchi(boredom) {
         game.tamagotchi.boredom = game.tamagotchi.boredom -2;
+        console.log(game.tomagotchi.boredom + "checking playWithFunction");
     },
     lightsOff(sleepiness) {
        
@@ -197,6 +199,7 @@ const game = {
     },
     feedMeal(hunger) {
         game.tamagotchi.hunger = game.tamagotchi.hunger - 2;
+        console.log(game.tomagotchi.hunger + "checking feedMeal");
     },
     showGameOverText() {
         if (game.tamagotchi.isDead() == true) {
@@ -216,9 +219,9 @@ const game = {
             console.log(game.tamagotchi.hunger + " check hunger after using stuffHappens function");
             game.printStats();
             count++;
-            if (isDead() == true) {
+            if (game.tamagotchi.isDead() == true) {
                 game.showGameOverText();
-            } else if (isTooOld() == true) {
+            } else if (game.tamagotchi.isTooOld() == true) {
                 game.showGameOverText();
             }
         }, 1000);
@@ -253,11 +256,14 @@ $('#sleep').on('click', () => {
     game.lightsOff();
 });
 $('#hungry').on('click', () => {
-    game.playWithTamagotchi();
+    game.feedMeal();
+    console.log(feedMeal());
 });
 
+
 $('#play').on('click', () => {
-    game.feedMeal();
+    game.playWithTamagotchi();
+    console.log(feedMeal());
 });
 
 $('#doneButton').on('click', () => {
