@@ -31,7 +31,7 @@ p {
 	font-family: 'Press Start 2P', cursive;
 	font-size: 10px;
 	text-align: center;
-	color: Deeppink;
+	color: DeepPink;
 	padding: auto 10px;
 	background-color: rgb(255,255,255,0.3);
 	width: 300px;
@@ -56,7 +56,7 @@ p {
 }
 #gameText {
 	display: block;
-	margin: auto;
+	margin: auto auto;
 
 	
 }

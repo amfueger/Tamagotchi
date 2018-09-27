@@ -104,14 +104,11 @@ class Tamagotchi {
         }
     }
     stuffHappens() {
-        // double all the values
         this.hunger = this.hunger++;
         this.sleepiness = this.sleepiness++;
         this.boredom = this.boredom++;
         this.age = this.age++;
-        console.log(this.hunger + "check stuffHappens hunger");
-        // change life cycle
-
+        console.log(this.hunger + "check stuffHappens hunger");      
     }
     isTooOld() {
         if (this.age > 10) {
@@ -188,16 +185,16 @@ const game = {
 
     },
 
-    playWithTamagotchi(boredom) {
+    playWithTamagotchi() {
         game.tamagotchi.boredom = game.tamagotchi.boredom -2;
         console.log(game.tomagotchi.boredom + "checking playWithFunction");
     },
-    lightsOff(sleepiness) {
+    lightsOff() {
        
         game.tamagotchi.sleepiness = game.tamagotchi.sleepiness - 2;
         
     },
-    feedMeal(hunger) {
+    feedMeal() {
         game.tamagotchi.hunger = game.tamagotchi.hunger - 2;
         console.log(game.tomagotchi.hunger + "checking feedMeal");
     },
@@ -211,9 +208,9 @@ const game = {
 
 
     },
-    startTimer(hunger, sleepiness, boredom, age) {
+    startTimer() {
         let count = 0;
-        let interval = setTimeout(function() {
+        let interval = setInterval(function() {
             game.tamagotchi.stuffHappens();
             //something is missing with an argument here. 
             console.log(game.tamagotchi.hunger + " check hunger after using stuffHappens function");
