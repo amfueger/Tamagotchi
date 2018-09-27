@@ -117,7 +117,7 @@ class Tamagotchi {
         return false;
     }
     isDead() {
-    	console.log(this.tamagotchi.hunger);
+    	console.log(this.hunger);
         if (this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10) {
 
             return true;
