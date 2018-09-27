@@ -256,8 +256,6 @@ $('#hungry').on('click', () => {
     game.feedMeal();
     console.log(feedMeal());
 });
-
-
 $('#play').on('click', () => {
     game.playWithTamagotchi();
     console.log(feedMeal());

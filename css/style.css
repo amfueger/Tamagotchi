@@ -47,6 +47,7 @@ p {
 	font-family: 'Press Start 2P', cursive;
 	display: inline-block;
   	justify-content: space-between;
+  	float: left;
 }
 #start, .getName{
 	display: block;
