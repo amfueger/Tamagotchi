@@ -208,7 +208,7 @@ const game = {
 
 
     },
-    startTimer() {
+    startTimer(myStopFunction) {
         let count = 0;
         let interval = setInterval(function() {
             game.tamagotchi.stuffHappens();
@@ -218,12 +218,17 @@ const game = {
             count++;
             if (game.tamagotchi.isDead() == true) {
                 game.showGameOverText();
+                game.myStopFunction();
             } else if (game.tamagotchi.isTooOld() == true) {
                 game.showGameOverText();
+                game.myStopFunction();
             }
         }, 1000);
 
     },
+    myStopFunction() {
+    clearInterval(startTimer);
+	},
     start() {
         //show input
         $('#getName').show();
@@ -249,14 +254,14 @@ $('#text').hide();
 
 $('#start').on('click', game.start);
 
-$('#sleep').on('click', () => {
+$('#sleepy').on('click', () => {
     game.lightsOff();
 });
 $('#hungry').on('click', () => {
     game.feedMeal();
     console.log(feedMeal());
 });
-$('#play').on('click', () => {
+$('#boredy').on('click', () => {
     game.playWithTamagotchi();
     console.log(feedMeal());
 });
