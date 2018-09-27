@@ -19,10 +19,12 @@ h2 {
 .oval {
 	width: 500px;
 	height: 600px;
-	background-image: url('img/tamagotchibackground.jpg');
+	background-image: url('img/tamagotchibackground.png');
+	background-repeat: repeat;
+	background-size: 100px;
 	border-radius: 50%;
 	border: 2px solid pink;
-	box-shadow: 5px 5px 5px rgba(105,105,105,0.5), inset 1em 1em rgba(255,255,255,0.1);
+	box-shadow: 10px 10px 10px rgba(69,69,69,0.5), inset 1em 1em rgba(255,255,255,0.3);
 }
 
 p {
@@ -31,27 +33,33 @@ p {
 	text-align: center;
 	color: Deeppink;
 	padding: auto 10px;
+	background-color: rgb(255,255,255,0.3);
+	width: 300px;
+	padding: 10px;
 }
-
+#text{
+	width: 200px;
+	text-align: center;
+}
 #hungry, #boredy, #sleepy {
 	border-radius: 50%
 	font-size: 1px;
 	font-family: 'Press Start 2P', cursive;
+	display: inline-block;
+  	justify-content: space-between;
 }
-
-
 #start, .getName{
 	display: block;
 	margin-left: auto;
     margin-right: auto;
    	font-family: 'Press Start 2P', cursive
 }
-.gameButtons {
-	display: flex;
-  	justify-content: space-between;
-  	flex-direction: row;
-}
+#gameText {
+	display: block;
+	margin: auto;
 
+	
+}
 button {
 	padding: 10px;
 	display: inline-block;
@@ -72,7 +80,7 @@ button {
 }
 .displayImage {
 	display: block;
-    margin: 10px auto 30px auto;
+    margin: -10px auto 30px auto;
     width: 200px;
     height: 200px;
     padding: 20px;

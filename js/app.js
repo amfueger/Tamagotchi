@@ -87,7 +87,7 @@ console.log("Test");
 
 class Tamagotchi {
     constructor(name) {
-        	this.name = name,
+        this.name = name,
             this.hunger = 0,
             this.sleepiness = 0,
             this.boredom = 0,
@@ -96,41 +96,40 @@ class Tamagotchi {
             this.birthday = this.makeBirthday()
     }
     changeLifeCycle() {
-		if(this.age === 3) {
-        	this.igglytoJiggly()
-        } 
+        if (this.age === 3) {
+            this.igglytoJiggly();
+        }
         if (this.age === 6) {
-        	this.jigglytoWiggly()
-        } 
-   }
+            this.jigglytoWiggly();
+        }
+    }
     stuffHappens() {
-    	// double all the values
+        // double all the values
         this.hunger = this.hunger++;
         this.sleepiness = this.sleepiness++;
         this.boredom = this.boredom++;
         this.age = this.age++;
-
+        console.log(this.hunger + "check stuffHappens hunger");
         // change life cycle
 
     }
-    isTooOld(){
-    	if(this.age > 10){
-        	console.log("Tamagotchi died of old age.");
-        	return true;
+    isTooOld() {
+        if (this.age > 10) {
+            return true;
         }
         return false;
     }
     isDead() {
+    	console.log(this.tamagotchi.hunger);
         if (this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10) {
-            console.log("Tamagotchi died of criminal negligence.");
-            //Figure out what to do here based on console log
+
             return true;
         }
-        
+
         return false;
     }
     makeBirthday() {
-    	const dt = new Date();
+        const dt = new Date();
         const birthday = dt.toUTCString();
         return birthday;
     }
@@ -139,93 +138,92 @@ class Tamagotchi {
         let pickedGender = Math.floor(Math.random() * genderCheck.length);
     }
     igglyToJiggly() {
-    	$('.displayImage').attr('src', "css/img/JigglyPuff.piskel");
+        $('.displayImage').attr('src', "css/img/JigglyPuff.gif");
     }
     jigglytoWiggly() {
-    	$('.displayImage').attr('src', "css/img/Igglybuff.piskel");
+        $('.displayImage').attr('src', "css/img/wigglytuff.gif");
     }
     igglyBuff() {
-    	$('.displayImage').attr('src', "css/img/Igglybuff.piskel");
+        $('.displayImage').attr('src', "css/img/Igglybuff.gif");
     }
-};
+}
 
 
 
 
 const game = {
     tamagotchi: null,
-    //Note that if this doesn't work to make the tamagotchi live outside the function when it's created, find other solution to ensure it does. 
+
+
     generateTamagotchi(name, birthday, count) {
-  		// Get name from input
 
-        const $nameInput = $('#name-input').val();
-        console.log("HEY");
-        console.log($nameInput);
-        console.log("HEY");
-
-        // 6. (AFTER MVP -- get timestamp)
-        
-       	
-
-        // 7. create tamagotchi here (until mvp, hard code birthday)
-		// 8. put tamagotchi you created in this.tomagotchi
+        const $nameInput = $('#name-input').val()[0];
         this.tamagotchi = new Tamagotchi($nameInput);
+        console.log(game.tamagotchi.hunger + "checking hunger after making tamagotchi");
+ 		//let hunger = game.tamagotchi.hunger;
+		//let sleepiness = game.tamagotchi.sleepiness;
+		// let boredom = game.tamagotchi.boredom;
+		// let age = game.tamagotchi.age;
         const $text = $('#text');
+        $text.show(); //.velocity('transition.FadeIn', 200);
 
-        $text.show()//.velocity('transition.FadeIn', 200);
+        $getName = $('#getName');
+        $getName.hide();
 
-        $getName = $('#getName')
-    	console.log($('#getName'));
-        $('#getName').hide()
-   		// .hide form again()
 
         setTimeout(() => {
             $('.gameButtons').show();
-            $text.hide()//.velocity('transition.FadeOut', 200);
-        }, 1000)
-        
-
-        // 9. start timer
+            $text.hide(); //.velocity('transition.FadeOut', 200);
+        }, 1000);
         this.startTimer();
-      	
-      	// this.tamagotchi.igglyBuff()
+
 
     },
-    printStats: function(hunger, sleepiness, boredom, age) {
-        console.log("test printStats");
-        $('.gameText').text("" + this.tamagotchi.hunger)
+    printStats() {
+        $('#text').text("hunger: " + this.tamagotchi.hunger + " sleepiness: " + this.tamagotchi.sleepiness + " boredom: " + this.tamagotchi.boredom);
+        $('#text').css({"font-family": "'Press Start 2P', cursive" , "display": "inline-block", "text-align": "center" , "width": "200px" , "color": "DeepPink"});
+        $('#text').show();
+
+
     },
-  
+
     playWithTamagotchi(boredom) {
-        this.tamagotchi.boredom -= this.tamagotchi.boredom;
+        game.tamagotchi.boredom = game.tamagotchi.boredom -2;
     },
     lightsOff(sleepiness) {
-        // let $sleepiness = $('.sleep')
-        this.tamagotchi.sleepiness = this.tamagotchi.sleepiness - 2;
-
-        //link the sleepy time to a delayed animation
-    },
-    feedMeal(hunger) {
-        this.tamagotchi.hunger = this.tamagotchi.hunger - 2;
-    },
-    showGameOverText(){
-
-    }
-    startTimer() {
-        //concerns, this looks like one interval total. Make sure to call interval in another loop elsewhere
-        let count = 0;
-        let interval = setInterval(function() {
-            game.tamagotchi.stuffHappens();
-            count++;
-            if(game.tamagotchi.isDead()){
-            	game.showGameOverText("You fucking suck!");
-            }else if(game.tamagotchi.isTooOld()){
-            	game.showGameOverText("Too goddamn old!");
-            }
-        }, 1000);
+       
+        game.tamagotchi.sleepiness = game.tamagotchi.sleepiness - 2;
         
     },
+    feedMeal(hunger) {
+        game.tamagotchi.hunger = game.tamagotchi.hunger - 2;
+    },
+    showGameOverText() {
+        if (game.tamagotchi.isDead() == true) {
+            $('#text').append('<p>You killed your Pokemon!! Try again next time</p>');
+        }
+        if (game.tamagotchi.isTooOld() == true) {
+            $('#text').append('<p>Your Pokemon made it to ten years old! Good job!</p>');
+        }
 
+
+    },
+    startTimer(hunger, sleepiness, boredom, age) {
+        let count = 0;
+        let interval = setTimeout(function() {
+            game.tamagotchi.stuffHappens();
+            //something is missing with an argument here. 
+            console.log(game.tamagotchi.hunger + " check hunger after using stuffHappens function");
+            game.printStats();
+            count++;
+            if (isDead() == true) {
+                game.showGameOverText();
+            } else if (isTooOld() == true) {
+                game.showGameOverText();
+            }
+        }, 1000);
+
+    },
     start() {
         //show input
         $('#getName').show();
@@ -252,37 +250,16 @@ $('#text').hide();
 $('#start').on('click', game.start);
 
 $('#sleep').on('click', () => {
-	game.lightsOff();
+    game.lightsOff();
 });
 $('#hungry').on('click', () => {
-	game.playWithTamagotchi();
+    game.playWithTamagotchi();
 });
 
 $('#play').on('click', () => {
-	game.feedMeal();
+    game.feedMeal();
 });
 
-// 3. add a listener for the done button
 $('#doneButton').on('click', () => {
-	game.generateTamagotchi();
+    game.generateTamagotchi();
 });
-
-// 4. test the listener for the done button
-
-// 5. make done button call getName -- see 5 above
-
-
-//listen for name entry
-
-
-/********************************QUESTIONS/NOTES*********************************/
-
-//Questions/notes would transitioning the tamagotchi from child to adult involve running a function? That function changing the image as well as updating properties? 
-//Make sure iterations of points are based on minutes not looping interaction. GAME LOOP can't include functions for aging, playing/exercising, sleeping! Can only call a variable that has the stored information!
-
-
-//Code snippets needed:
-
-
-//CALL THE GAME
-//on.click start button
