@@ -50,7 +50,7 @@ console.log("Test");
 
 1. User clicks start game button
 	a. Tamgagotchi is generated with properties of hunger, sleepiness, boredom, age, name, gender, birthday. His birthday is logged. Stats are printed. 
-	b. 
+	b. interval moves up, adds numbers to properties hunger, boredom, sleepy
 
 
 
@@ -150,7 +150,7 @@ class Tamagotchi {
 
 const game = {
     tamagotchi: null,
-
+    interval: '',
 
     generateTamagotchi(name, birthday, count) {
 
@@ -179,7 +179,6 @@ const game = {
     },
     printStats() {
         $('#text').text("hunger: " + this.tamagotchi.hunger + " sleepiness: " + this.tamagotchi.sleepiness + " boredom: " + this.tamagotchi.boredom);
-        $('#text').css({"font-family": "'Press Start 2P', cursive" , "display": "inline-block", "text-align": "center" , "width": "200px" , "color": "DeepPink"});
         $('#text').show();
 
 
@@ -210,7 +209,7 @@ const game = {
     },
     startTimer(myStopFunction) {
         let count = 0;
-        let interval = setInterval(function() {
+        this.interval = setInterval(function() {
             game.tamagotchi.stuffHappens();
             //something is missing with an argument here. 
             console.log(game.tamagotchi.hunger + " check hunger after using stuffHappens function");
@@ -227,7 +226,7 @@ const game = {
 
     },
     myStopFunction() {
-    clearInterval(startTimer);
+    	clearInterval(this.interval);
 	},
     start() {
         //show input
