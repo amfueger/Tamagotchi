@@ -1,3 +1,7 @@
+
+body {
+	background-image: url('img/backgroundofbackground2.gif')
+}
 h1 {
 	color: GhostWhite;
 	text-align: center;
@@ -13,17 +17,20 @@ h2 {
 	font-weight: 10;
 }
 .oval {
-	width: 600px;
-	height: 700px;
-	background-clip: content-box;
+	width: 500px;
+	height: 600px;
 	background-image: url('img/tamagotchibackground.jpg');
 	border-radius: 50%;
 	border: 2px solid pink;
+	box-shadow: 5px 5px 5px rgba(105,105,105,0.5), inset 1em 1em rgba(255,255,255,0.1);
 }
 
 p {
 	font-family: 'Press Start 2P', cursive;
 	font-size: 10px;
+	text-align: center;
+	color: Deeppink;
+	padding: auto 10px;
 }
 
 #hungry, #boredy, #sleepy {
@@ -31,3 +38,47 @@ p {
 	font-size: 1px;
 	font-family: 'Press Start 2P', cursive;
 }
+
+
+#start, .getName{
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+   	font-family: 'Press Start 2P', cursive
+}
+.gameButtons {
+	display: flex;
+  	justify-content: space-between;
+  	flex-direction: row;
+}
+
+button {
+	padding: 10px;
+	display: inline-block;
+	margin: 4px 2px;
+	border-radius: 50%;
+	font-size: 10px;
+	box-shadow: 5px 5px 5px rgba(105,105,105,0.5), inset 2em 2em rgba(255,255,255,0.1);
+	background-color: pink;
+	color: Deeppink;
+}
+
+#logo {
+   	display: block;
+    margin: 20px auto auto auto;
+    
+
+   
+}
+.displayImage {
+	display: block;
+    margin: 10px auto 30px auto;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px; 
+    border: 2px GhostWhite solid;
+    box-shadow: inset 0px 0px 40px rgba(105,105,105);
+}
+
+
