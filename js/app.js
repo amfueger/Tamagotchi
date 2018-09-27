@@ -104,10 +104,10 @@ class Tamagotchi {
         }
     }
     stuffHappens() {
-        this.hunger = this.hunger++;
-        this.sleepiness = this.sleepiness++;
-        this.boredom = this.boredom++;
-        this.age = this.age++;
+        this.hunger = this.hunger + 1;
+        this.sleepiness = this.sleepiness + 1;
+        this.boredom = this.boredom + 1;
+        this.age = this.age + 1;
         console.log(this.hunger + "check stuffHappens hunger");      
     }
     isTooOld() {
